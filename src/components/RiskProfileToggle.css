@@ -1,0 +1,70 @@
+.risk-profile-toggle {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.risk-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.risk-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.risk-option:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.risk-option.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.risk-label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.risk-description {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .risk-profile-toggle {
+    gap: 0.375rem;
+  }
+  
+  .risk-option {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .risk-label {
+    font-size: 0.875rem;
+  }
+  
+  .risk-description {
+    font-size: 0.7rem;
+  }
+}
