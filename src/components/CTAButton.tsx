@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { motion } from 'framer-motion';
 import './CTAButton.css';
 
 interface CTAButtonProps {
@@ -13,14 +14,16 @@ export const CTAButton = memo(({ sticky = false }: CTAButtonProps) => {
     };
 
     return (
-        <button
+        <motion.button
             className={`cta-button ${sticky ? 'sticky' : ''}`}
             onClick={handleClick}
-            aria-label="Start your savings journey today"
+            aria-label="Begin your financial planning journey"
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-            <span className="cta-text">Start Saving Today</span>
-            <span className="cta-icon">→</span>
-        </button>
+            <span className="cta-text">Begin Planning</span>
+        </motion.button>
     );
 });
 

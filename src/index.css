@@ -1,4 +1,38 @@
-/* CSS Reset and Base Styles */
+/* Premium Metallic Design System */
+:root {
+  /* Premium Metallic Palette - Deep Blue-Black + Antique Gold */
+  --background-primary: #05070B;
+  --background-elevated: #0A0D12;
+  --background-subtle: #0F1318;
+
+  --accent-primary: #C6A96B;
+  --accent-subtle: rgba(198, 169, 107, 0.12);
+  --accent-border: rgba(198, 169, 107, 0.15);
+
+  --text-primary: #C9CED6;
+  --text-secondary: #8A9098;
+  --text-tertiary: #5A5F66;
+  --border-subtle: rgba(198, 169, 107, 0.08);
+
+  /* Typography - Serif + Sans */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing - Generous, ceremonial */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* Motion - Slow, dignified */
+  --motion-fast: 200ms;
+  --motion-normal: 300ms;
+  --motion-slow: 400ms;
+  --easing-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* CSS Reset */
 *,
 *::before,
 *::after {
@@ -15,22 +49,20 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Fintech-inspired dark gradient background */
-  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
-  background-attachment: fixed;
-  color: rgba(255, 255, 255, 0.9);
+  /* Deep blue-black background - ceremonial, premium */
+  background: var(--background-primary);
+  color: var(--text-primary);
 
   min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.7;
 }
 
-/* Add subtle pattern overlay */
+/* Subtle texture overlay - barely visible */
 body::before {
   content: '';
   position: fixed;
@@ -39,9 +71,7 @@ body::before {
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 20%, rgba(240, 147, 251, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 30% 40%, rgba(201, 169, 97, 0.03) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
@@ -64,20 +94,20 @@ code {
   }
 }
 
-/* Custom scrollbar for webkit browsers */
+/* Refined scrollbar - nearly invisible */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(102, 126, 234, 0.5);
-  border-radius: 5px;
+  background: rgba(198, 169, 107, 0.15);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(102, 126, 234, 0.7);
+  background: rgba(198, 169, 107, 0.25);
 }

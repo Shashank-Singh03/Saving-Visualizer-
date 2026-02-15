@@ -1,13 +1,18 @@
 import { useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import type { RiskProfile } from '../constants/financial';
 import { FINANCIAL_CONSTANTS } from '../constants/financial';
 import { useDebounce } from '../hooks/useDebounce';
 import { useSavingsCalculator } from '../hooks/useSavingsCalculator';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Navbar } from './Navbar';
 import { SavingsSlider } from './SavingsSlider';
 import { TimeHorizonSelector } from './TimeHorizonSelector';
 import { RiskProfileToggle } from './RiskProfileToggle';
 import { SavingsChart } from './SavingsChart';
 import { MetricsDisplay } from './MetricsDisplay';
+import { ExpectedImpactSection } from './ExpectedImpactSection';
+import { DesignDecisionsSection } from './DesignDecisionsSection';
 import { CTAButton } from './CTAButton';
 import './SavingsVisualizer.css';
 
@@ -39,17 +44,32 @@ export function SavingsVisualizer() {
         setRiskProfile(profile);
     }, []);
 
+    // Scroll reveal hooks for each section
+    const controlsReveal = useScrollReveal({ threshold: 0.1 });
+    const resultsReveal = useScrollReveal({ threshold: 0.1 });
+    const chartReveal = useScrollReveal({ threshold: 0.1 });
+
     return (
         <div className="savings-visualizer">
-            <header className="visualizer-header">
-                <h1>Small Daily Savings → Real Wealth Over Time</h1>
+            <Navbar />
+
+            <header id="hero" className="visualizer-header">
+                <h1>Consistent saving compounds meaningfully over time</h1>
                 <p className="subtitle">
-                    See how consistent daily savings can transform your financial future with the power of compound growth
+                    See the long-term impact of daily savings
                 </p>
             </header>
 
             <div className="visualizer-content">
-                <section className="controls-section" aria-label="Savings calculator controls">
+                <motion.section
+                    id="mechanism"
+                    ref={controlsReveal.ref}
+                    className="controls-section"
+                    aria-label="Savings calculator controls"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={controlsReveal.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                >
                     <div className="control-group">
                         <label htmlFor="savings-slider" className="control-label">
                             Daily Savings Amount
@@ -75,21 +95,39 @@ export function SavingsVisualizer() {
                             onChange={handleRiskProfileChange}
                         />
                     </div>
-                </section>
+                </motion.section>
 
-                <section className="results-section" aria-label="Calculation results">
+                <motion.section
+                    id="projections"
+                    ref={resultsReveal.ref}
+                    className="results-section"
+                    aria-label="Calculation results"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={resultsReveal.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1], delay: 0.1 }}
+                >
                     <MetricsDisplay
                         metrics={metrics}
                         dailySavings={debouncedDailySavings}
                     />
 
-                    <div className="chart-container">
+                    <motion.div
+                        ref={chartReveal.ref}
+                        className="chart-container"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={chartReveal.isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
+                    >
                         <h3 className="chart-title">Growth Projection Over Time</h3>
                         <SavingsChart data={chartData} />
-                    </div>
-                </section>
+                    </motion.div>
+                </motion.section>
 
-                <section className="cta-section">
+                {/* Product-thinking sections */}
+                <ExpectedImpactSection id="philosophy" />
+                <DesignDecisionsSection id="rationale" />
+
+                <section id="begin" className="cta-section">
                     <CTAButton sticky />
                 </section>
             </div>

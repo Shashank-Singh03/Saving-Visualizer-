@@ -1,10 +1,10 @@
-import { SavingsVisualizer } from './components/SavingsVisualizer';
+import { LandingEntry } from './components/LandingEntry';
 import './App.css';
 
 function App() {
   return (
     <div className="app">
-      <SavingsVisualizer />
+      <LandingEntry />
     </div>
   );
 }

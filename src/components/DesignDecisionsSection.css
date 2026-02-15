@@ -1,0 +1,118 @@
+/* Editorial Rationale Section - Premium Private Bank Report Style */
+
+.design-decisions-section {
+    position: relative;
+    padding: calc(var(--space-xl) * 1.35) 0;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* Subtle dark vignette for depth */
+    background: radial-gradient(ellipse at center,
+            transparent 0%,
+            rgba(0, 0, 0, 0.15) 100%);
+}
+
+/* Vertical gold guide line */
+.design-decisions-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            var(--accent-primary) 15%,
+            var(--accent-primary) 85%,
+            transparent 100%);
+    opacity: 0.4;
+}
+
+.design-decisions-section .section-header {
+    text-align: center;
+    margin-bottom: calc(var(--space-xl) * 1.35);
+}
+
+.design-decisions-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+    /* Antique gold */
+    margin-bottom: var(--space-sm);
+    letter-spacing: -0.01em;
+}
+
+.design-decisions-section .section-subtitle {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--text-tertiary);
+    font-weight: 400;
+}
+
+.decisions-container {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--space-md) * 1.35);
+    margin-bottom: calc(var(--space-lg) * 1.35);
+    padding-left: var(--space-xl);
+    /* Indent from guide line */
+}
+
+.decision-item {
+    background: var(--background-elevated);
+    border-left: 2px solid var(--border-subtle);
+    padding: calc(var(--space-md) * 1.2) var(--space-lg);
+    transition: border-color var(--motion-normal) var(--easing-elegant);
+}
+
+.decision-item:hover {
+    border-left-color: var(--accent-border);
+}
+
+.decision-title {
+    font-family: var(--font-sans);
+    /* Keep sans for decision titles */
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: calc(var(--space-sm) * 1.2);
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+}
+
+.decision-explanation {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.decisions-note {
+    background: var(--background-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.decisions-note p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Mobile refinements */
+@media (max-width: 768px) {
+    .decision-item {
+        padding: var(--space-md);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .decision-item {
+        transition: none;
+    }
+}

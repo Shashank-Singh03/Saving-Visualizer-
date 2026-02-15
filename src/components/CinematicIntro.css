@@ -1,0 +1,71 @@
+/* Cinematic Intro Container */
+
+.cinematic-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #05070B;
+    z-index: 9999;
+
+    /* Fade out + scale animation */
+    animation: fadeOutScale 400ms cubic-bezier(0.22, 1, 0.36, 1) 2600ms forwards;
+    pointer-events: none;
+}
+
+/* Skip intro button - accessible but subtle */
+.skip-intro {
+    position: fixed;
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+    z-index: 10;
+
+    padding: var(--space-sm) var(--space-md);
+    background: transparent;
+    border: 1px solid rgba(198, 169, 107, 0.3);
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    opacity: 0;
+    pointer-events: all;
+    transition: all var(--motion-normal) var(--easing-elegant);
+}
+
+.skip-intro:hover,
+.skip-intro:focus-visible {
+    opacity: 0.7;
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    outline: none;
+}
+
+.skip-intro:focus {
+    opacity: 1;
+}
+
+/* Cinematic fade out */
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.02);
+        visibility: hidden;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .cinematic-intro {
+        animation: none;
+        display: none;
+    }
+}

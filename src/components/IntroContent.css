@@ -1,0 +1,99 @@
+/* Cinematic Intro Content */
+
+.intro-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 1200px;
+    width: 90%;
+    padding: 0 var(--space-md);
+    z-index: 10;
+}
+
+/* Monumental Headline with Gold Gradient */
+.intro-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-xl);
+
+    /* Subtle antique-gold gradient */
+    background: linear-gradient(135deg,
+            #C6A96B 0%,
+            #E7D3A3 50%,
+            #C6A96B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 100%;
+
+    /* Headline animation */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 800ms cubic-bezier(0.22, 1, 0.36, 1) 200ms forwards;
+}
+
+.intro-line {
+    display: block;
+}
+
+/* Subtitle */
+.intro-subtitle {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: #C9CED6;
+    /* Soft silver */
+    max-width: 700px;
+    margin: 0 auto;
+
+    /* Subtitle animation */
+    opacity: 0;
+    animation: fadeIn 800ms cubic-bezier(0.22, 1, 0.36, 1) 600ms forwards;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .intro-headline {
+        margin-bottom: var(--space-lg);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .intro-headline,
+    .intro-subtitle {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
